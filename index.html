@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Independence Day Greetings</title>
+<style>
+body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #ff073a, #ffd700, #000000); display:flex; justify-content:center; align-items:center; height:100vh; margin:0; }
+.container { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow:0 0 20px #ff073a; border:3px solid #ff073a;}
+input { padding:10px; font-size:16px; border-radius:5px; border:2px solid #FFFF00; margin-right:10px; background-color:#39FF14; color:black; font-weight:bold; outline:none;}
+input:focus { box-shadow:0 0 10px #FFFF00; border-color:#FFFF00;}
+button { padding:10px 20px; font-size:16px; border-radius:5px; border:2px solid #39FF14; background-color:#007BFF; color:white; cursor:pointer; margin-top:10px; font-weight:bold; transition:all 0.3s ease;}
+button:hover { background-color:#0056b3; box-shadow:0 0 10px #39FF14;}
+h2 { color:black; font-size:28px; font-weight:bold; margin:10px 0;}
+.greeting { margin-top:20px; font-size:22px; font-weight:bold; color:gold;}
+.flag { font-size:60px; margin-bottom:15px;}
+.share-btn { background-color:#25D366; margin-top:15px; display:inline-block;}
+.share-btn:hover { background-color:#128C7E;}
+.footer { margin-top:20px; font-size:14px; color:#555;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="flag">🇵🇬</div>
+<h2>Happy 50 Years Celebration!</h2>
+<div id="firstPage">
+<p>Enter your name to receive your greeting:</p>
+<input type="text" id="name" placeholder="Your Name">
+<button onclick="greetUser()">Submit</button>
+</div>
+<div class="greeting" id="greeting" style="display:none;"></div>
+<a id="whatsappShare" class="share-btn" href="#" target="_blank" style="display:none; padding:10px 20px; color:white; border-radius:5px; text-decoration:none;">Share on WhatsApp</a>
+<div class="footer">Created by Chaje | Java</div>
+</div>
+<script>
+function greetUser() {
+const name = document.getElementById('name').value.trim();
+const firstPage = document.getElementById('firstPage');
+const greetingDiv = document.getElementById('greeting');
+const whatsappLink = document.getElementById('whatsappShare');
+if(name) {
+firstPage.style.display='none';
+const message = `Hello, ${name}! Wishing you a Happy 50 Years Independence Celebration! 🎉🇵🇬`;
+greetingDiv.innerText = message;
+greetingDiv.style.display='block';
+const encodedMessage = encodeURIComponent(message);
+whatsappLink.href = `https://wa.me/?text=${encodedMessage}`;
+whatsappLink.style.display='inline-block';
+} else { alert("Please enter your name!");}
+}
+</script>
+</body>
+</html>
